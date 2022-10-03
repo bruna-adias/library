@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "*.cpp": "cpp",
+    "vector": "cpp",
+    "ostream": "cpp",
+    "xstring": "cpp",
+    "map": "cpp",
+    "string": "cpp",
+    "stdexcept": "cpp",
+    "iostream": "cpp",
+    "utility": "cpp",
+    "xtree": "cpp",
+    "xmemory0": "cpp"
+  }
+}
