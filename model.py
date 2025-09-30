@@ -7,6 +7,22 @@ class Book:
     def __init__(self, title: str, price_code: int):
         self.title = title
         self.price_code = price_code
+        
+    def get_charge(self, days_rented: int):
+        amount = 0
+        
+        if self.price_code == Book.REGULAR:
+            amount += 2
+            if days_rented > 2:
+                amount += (days_rented - 2) * 1.5
+        elif self.price_code == Book.NEW_RELEASE:
+            amount += days_rented * 3
+        elif self.price_code == Book.CHILDREN:
+            amount += 1.5
+            if days_rented > 3:
+                amount += (days_rented - 3) * 1.5
+        
+        return amount
 
 
 class Rental:
@@ -22,20 +38,7 @@ class Rental:
 
 
     def get_charge(self) -> float:
-        amount = 0
-        
-        if self.book.price_code == Book.REGULAR:
-            amount += 2
-            if self.days_rented > 2:
-                amount += (self.days_rented - 2) * 1.5
-        elif self.book.price_code == Book.NEW_RELEASE:
-            amount += self.days_rented * 3
-        elif self.book.price_code == Book.CHILDREN:
-            amount += 1.5
-            if self.days_rented > 3:
-                amount += (self.days_rented - 3) * 1.5
-        
-        return amount
+        return self.book.get_charge(self.days_rented)
 
 
 class Client:
